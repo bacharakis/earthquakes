@@ -13,7 +13,6 @@ from json import JSONEncoder
 from bson.json_util import dumps
 import json
 from chartit import DataPool, Chart
-from guralp.models import guralp,history
 from graphos.sources.mongo import MongoDBDataSource
 from graphos.sources.simple import SimpleDataSource
 import numpy as np
