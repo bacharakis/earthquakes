@@ -89,9 +89,7 @@
 
             {%endfor%}
           </select>
-        </br><input id="processed" value="selected" type="checkbox"><label for="processed">Pro.</label>
-      <input id="unprocessed" type="checkbox"><label for="unprocessed">Unpro.</label>
-    <input id="spectra" type="checkbox"><label for="spectra">Spec.</label>
+
         </div>
         <div class="large-4 columns text-center">
           <div class="button-bar text-center">
@@ -103,8 +101,6 @@
                 <a href="#" onClick="btnRight()" class="small button secondary"> >> </a>
 
           </div>
-          <a href="#" onClick='refresh_station_files("{{station_code}}")' class="button round">Refresh</a>
-        </br><a id="download_files" href="#" onClick="download_files()" class="button round">Download</a>
       </br>  <a href="#" onClick="plot_graph()" class="button round">Plot</a>
 
         </div>
