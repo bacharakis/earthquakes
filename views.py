@@ -339,8 +339,8 @@ def chart(request):
             chart = gchart.LineChart(SimpleDataSource(data=data))
             for c in data:
                 print c
-            file_name = "TEST"
-            return render(request, 'earthquakes/chart.html', { 'point_chart' : chart, "file_name" : file_name } )
+
+            return render(request, 'earthquakes/chart.html', { 'point_chart' : chart } )
 
 def plotting_station_files(request):
     if request.GET:
