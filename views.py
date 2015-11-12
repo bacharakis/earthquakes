@@ -146,7 +146,7 @@ def events_api(request):
 
 def get_filenames_datetime_range(request):
     try:
-        client = MongoClient()
+        client = MongoClient("195.251.49.57")
         db = client.test_database
     except:
         print "Couldn't connect to mongoDB database"
@@ -210,7 +210,7 @@ def plotting_files(request):
             print "Couldn't retreive datetime from GET",e
 
         try:
-            client = MongoClient()
+            client = MongoClient("195.251.49.57")
             db = client.test_database
         except Exception,e:
             print "Couldn't connect to mongoDB database"
@@ -275,7 +275,7 @@ def chart(request):
             print "Couldn't retreive file name from GET",e
 
         try:
-            client = MongoClient()
+            client = MongoClient("195.251.49.57")
             db = client.test_database
         except Exception,e:
             print "Couldn't connect to mongoDB database"
@@ -339,8 +339,8 @@ def chart(request):
             chart = gchart.LineChart(SimpleDataSource(data=data))
             for c in data:
                 print c
-
-            return render(request, 'earthquakes/chart.html', { 'point_chart' : chart } )
+            file_name = "TEST"
+            return render(request, 'earthquakes/chart.html', { 'point_chart' : chart, "file_name" : file_name } )
 
 def plotting_station_files(request):
     if request.GET:
@@ -350,7 +350,7 @@ def plotting_station_files(request):
             print "Couldn't retreive datetime from GET",e
 
         try:
-            client = MongoClient()
+            client = MongoClient("195.251.49.57")
             db = client.test_database
         except Exception,e:
             print "Couldn't connect to mongoDB database"
