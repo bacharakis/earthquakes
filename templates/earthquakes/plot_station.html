@@ -1,4 +1,7 @@
 {% extends "foundation/base.html" %} {% block base_body %} {% load static %}
+{% block base_title %}
+    <title>{% block title %}Hellenic Accelerograms Database v2.0 {% endblock title %}</title>
+{% endblock base_title %}
 <script src="{% static 'earthquakes/pikaday.js' %}" type="text/javascript"></script>
 <script src="{% static 'earthquakes/functions.js' %}" type="text/javascript"></script>
 <script src="{% static 'earthquakes/moment.js' %}" type="text/javascript"></script>
