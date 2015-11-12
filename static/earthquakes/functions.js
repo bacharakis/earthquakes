@@ -274,6 +274,19 @@ function btnLeft() {
     var selectedItem = $("#rightValues option:selected");
     $("#leftValues").append(selectedItem);
 }
+function download_files(){
+  $.urlParam = function(name){
+  	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+  	return results[1] || 0;
+  }
+
+  // example.com?param1=name&param2=&id=6
+
+console.log($.urlParam('id'));       // 6
+
+window.location.href = 'download?id='+$.urlParam('id');
+
+}
 function load(){
 
 $('#processed').prop('checked', true);
