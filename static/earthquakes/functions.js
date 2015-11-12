@@ -288,13 +288,24 @@ window.location.href = 'download?id='+$.urlParam('id');
 
 }
 function load(){
+  console.log("sata");
 
-$('#processed').prop('checked', true);
-$('#unprocessed').prop('checked', true);
-$('#spectra').prop('checked', true);
 
-$('#download_files').click(function(e) {
+
+
+$('#save_file').click(function(e) {
+  console.log("sata");
     e.preventDefault();  //stop the browser from following
-    window.location.href = 'download';
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      return results[1] || 0;
+    }
+
+    // example.com?param1=name&param2=&id=6
+
+  console.log($.urlParam('id'));       // 6
+
+  window.location.href = 'download?id='+$.urlParam('id');
+
 });
 }

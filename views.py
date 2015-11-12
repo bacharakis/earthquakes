@@ -387,12 +387,38 @@ def plotting_station_files(request):
 
 def download_files(request):
 
+    if request.GET:
+        try:
+            file_name = request.GET['id']
+        except Exception,e:
+            print "Couldn't retreive datetime from GET",e
+        try:
+            client = MongoClient("195.251.49.57")
+            db = client.test_database
+        except Exception,e:
+            print "Couldn't connect to mongoDB database"
 
-    response = HttpResponse(content_type='text')
-    response['Content-Disposition'] = 'attachment; filename="ABS1_19950513084713.L.dat.smc8.alc00.129ns08.taper__0.0__0.0.d.asc"'
+        try:
+            collection = db.files
+        except Exception,e:
+            print e
 
-    writer = csv.writer(response)
-    writer.writerow(['First rowBaz'])
-    writer.writerow(['Second rowHeres a quote'])
+        data  =  []
 
+        ic=collection.find_one({"file_name" : file_name })
+        for c in ic["data"]:
+            data.append(c)
+
+    #response = HttpResponse(content_type='csv')
+    #response['Content-Disposition'] = 'attachment; filename="ABS1_19950513084713.L.dat.smc8.alc00.129ns08.taper__0.0__0.0.d.asc"'
+
+    #writer = csv.writer(response)
+    #writer.writerow(['First rowBaz'])
+    #writer.writerow(['Second rowHeres a quote'])
+
+
+    # generate the file
+    response = HttpResponse(data, content_type='text')
+    response['Content-Disposition'] = 'attachment; filename='+file_name
     return response
+    #return response
